@@ -56,14 +56,6 @@
     }
     
 </style>
-<script> 
-    var p=document.querySelectorAll("button");
-    p.forEach(function(element){
-        element.onClick=function(){
-            alert("hello");
-        }
-    })
-</script>
 </head>
 <body>
 <div class="container">
@@ -72,7 +64,7 @@
 <div class="row">
 <div class="col-xs-12 col-xs-offset-0 screen-panel">
 <div class="row">
-<div class="col-xs-10 col-xs-offset-1 screen">
+<div class="col-xs-10 col-xs-offset-1 screen" id="screen">
 0000
 </div>    
 </div>
@@ -109,6 +101,15 @@
 </div>
 </div>
 </div>
-</div>    
+</div>  
+<script> 
+    var btn=document.querySelectorAll(".btn");
+    btn.forEach(function(element){
+        element.onclick=function(){
+            document.getElementById("screen").innerHTML=document.getElementById("screen").innerHTML+element.innerHTML;
+        }
+    })
+</script>
+
 </body>
 </html>
