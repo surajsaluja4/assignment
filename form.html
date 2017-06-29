@@ -1,0 +1,49 @@
+<html>
+<head>
+<title>Form</title>
+    <style>
+        .labels{
+            font-size:20px;
+            font-family: sans-serif;
+        }
+        .input_text{
+            border:none;
+            border-bottom: 2px solid red;
+            padding: 10px;
+            outline: none;
+            width:100%;
+            font-size:20px;
+            font-family: sans-serif;
+            text-transform: capitalize;
+        }
+        input[type=text]:focus {
+    border: none;
+    border-bottom:2px solid green;
+}
+        table{
+            min-width:50%;
+            max-width: 70%;
+            
+        }
+        tr{
+            border: 5px solid black;
+        }
+
+
+    </style>
+</head>
+<body>
+    <form>
+    <table>
+    <tr>
+        <td><span class="labels">First Name</span></td>
+        <td><input type="text" name="name" placeholder="enter your name here" class="input_text"></td>
+    </tr>
+        <tr>
+        <td><span class="labels">Last Name</span></td>
+        <td><input type="text" name="name" placeholder="enter your name here" class="input_text"></td>
+    </tr>
+    </table>
+    </form>
+</body>
+</html>

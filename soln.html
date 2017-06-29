@@ -1,0 +1,241 @@
+1.Create Javascript function that reverses a string. E.g. “Hello world” => “dlrow olleH”
+
+<script>
+    
+ var str="Hello World";
+ var a=str.split("");
+var b=a.reverse();    
+var reverse_string=b.join("");
+console.log(reverse_string);
+ 
+</script>
+
+2. Use above function to create function that performs word wise reverse function. E.g. “Hello world” => “olleH dlrow”
+
+<script>
+    
+ var str="Hello World";
+ var a=str.split(" ");
+ var b=a.reduce(function(counter,element){
+     counter.unshift(element);
+     return counter;
+ },[]);
+   
+    var str=b.join(" ");
+  var str1=str.split("");
+    var str2=str1.reverse();
+    var reverse_string=str2.join("");
+    console.log(reverse_string);
+    
+</script>
+
+3. Create a function that capitalises each word of a sentence. E.g “javascRipt is a smart LanguAge. but it Requires too much effort.” => “JavascRipt Is A Smart LanguAge. But It Requires Too Much Effort.”
+
+<script>
+var str="heLLo i aM in Room";
+c=str.split(" ");
+var a=c.map(function(element){
+  b=element.charAt(0).toUpperCase();
+    c=element.slice(1);
+   return b+c;
+});
+    str=a.join(" ");
+    console.log(str);
+</script>
+
+Try to run above function with some more efficiency, such that every word is capitalized and all remaining letters are converted to small case. E.g. “Javascript Is A Smart Language. But It Requires Too Much Effort.”
+
+<script>
+var str="heLLo i aM in Room";
+c=str.split(" ");
+var a=c.map(function(element){
+  var b=element.charAt(0).toUpperCase();
+   var c=element.slice(1).toLowerCase();
+   return b+c;
+});
+    str=a.join(" ");
+    console.log(str);
+</script>
+
+5. Use below code as template 
+	var capital={
+		'delhi':'Delhi',
+		'uttar pradesh':'Lucknow',
+		'haryana':'Chandigarh',
+		'punjab':'Chandigarh',
+		'uttarakhand':'Dehradoon'
+	}
+
+	var cities=[
+		{city:'Agra',state:'Uttar Pradesh'},
+		{city:'Faridabad',state:'Haryana'},
+		{city:'West delhi',state:'Delhi'},
+		{city:'Amritsar',state:'Punjab'},
+		{city:'Nainital',state:'Uttarakhand'},
+	]
+
+	Now create a new array cityData from cities such that  every element contains object with city state and its capital. E.g {city:’Agra’, state:’Uttar Pradesh’, capital:’Lucknow’}
+
+<script>
+var capital={
+		'delhi':'Delhi',
+		'uttar pradesh':'Lucknow',
+		'haryana':'Chandigarh',
+		'punjab':'Chandigarh',
+		'uttarakhand':'Dehradoon'
+	}
+
+	var cities=[
+		{city:'Agra',state:'Uttar Pradesh'},
+		{city:'Faridabad',state:'Haryana'},
+		{city:'West delhi',state:'Delhi'},
+		{city:'Amritsar',state:'Punjab'},
+		{city:'Nainital',state:'Uttarakhand'},
+	]
+    
+    
+           
+             cities.forEach(function(element){
+                 a={"city":element.city,"state":element.state,"capital":capital[element.state]};
+                 
+             })
+
+</script>
+
+5.Create a function to convert a number into array of digits. 1234 => [1,2,3,4]. Make sure elements in array must be of type integer.
+
+<script>
+a=1234;
+    x=""+a;
+    b=x.split("");
+    c=b.map(function(element){
+        return parseInt(element);
+    })
+    console.log(c);
+</script>
+
+6.Create a function that finds sum of all elements of array of digits. [1,2,3,4] => 10.
+
+<script>
+var a=[1,2,3,4];
+    var c=0;
+    a.forEach(function(element){
+        c=c+element;
+    });
+    
+    console.log(c);
+    
+    
+</script>
+
+7. Use above function to recursively add all elements of array until you get a single digit.
+<script>
+a=[1,2,3,910];
+    
+b=a.reduce(function(counter,element){
+    counter=counter+element;
+    if(counter>9)
+        {
+            
+            s=0;
+            while(counter>0)
+                {
+                counter=parseInt(counter);
+                c=counter%10;
+                counter=counter/10;
+                s=s+c;
+                }
+            counter=s;
+        }
+    return counter;
+},0);
+    
+    console.log(b);
+  
+</script>
+
+8.Check whether a list of digits is palindrome or not . [1,2,3,2,1] => true.
+
+<script>
+var a=[1,2,3,2,1];
+var b=a.reduce(function(counter,element){
+    counter.unshift(element);
+    return counter;
+},[]);
+   
+    s=a.every(function (element,index){
+            return element==b[index];
+    });
+    console.log(s);
+</script>
+
+9. Use previous functions to check whether a string is palindrome or not.
+
+<script>
+var a="abcba";
+var b=a.split("");
+var c=b.reduce(function(counter,element){
+    counter.unshift(element);
+    return counter;
+},[]);
+    
+    var s=b.every(function(element,index){
+        return element==c[index];
+    });
+    
+    console.log(s);
+        
+</script>
+
+10. Create a function that cleans(remove duplicates) an array of digits/strings.
+
+<script>
+    a=[1,2,3,1,2,1,4];
+     b=[];
+    for(var key in a)
+        {
+    if(a[key] in b)
+       {    }
+        else{
+        b.push(a[key]);
+        }
+        }
+</script>
+11. Create a function that cleans(remove duplicates) from an array of objects.
+<script>
+var cities=[
+		{city:'Agra',state:'Uttar Pradesh'},
+		{city:'Faridabad',state:'Haryana'},
+		{city:'West delhi',state:'Delhi'},
+		{city:'Amritsar',state:'Punjab'},
+		{city:'Nainital',state:'Uttarakhand'},
+        {city:'Faridabad',state:'Haryana'},
+		{city:'West delhi',state:'Delhi'}
+		
+	]
+b=[];
+o:for(var i=0;i<cities.length;i++)
+    {
+    for(var j=1;j<cities.length;j++)
+        {
+            if((cities[i].city==cities[j].city&&cities[i].state==cities[j].state))
+                {
+                    console.log("i "+i+"j "+j+" "+cities[i].city);
+                continue o;
+                }
+            else{
+                console.log("not i "+i+"j "+j+" "+cities[i].city);
+            }
+           
+        }
+        
+        
+    }
+        b.forEach(function(element)
+        {
+        console.log(element);
+        })
+    
+
+
+</script>
