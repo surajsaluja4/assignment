@@ -1,0 +1,75 @@
+<html>
+  <head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+   <style>
+   #curve_chart{
+   height: 500px;
+   }
+   
+   </style>
+  </head>
+  <body>
+  <div class="row">
+    <div id="curve_chart" class="col-md-9"></div>
+	<div class="form1 col-md-3">
+	<form action="#">
+	<div class="form-group">
+	<label class="control-label">Time</label>
+	<input class="form-control" placeholder="Time" id="time">
+	</div>
+	<div class="form-group">
+	<label class="control-label">Team A</label>
+	<input class="form-control" placeholder="Team A" id="team1">
+	</div>
+	<div class="form-group">
+	<label class="control-label">Team B</label>
+	<input class="form-control" placeholder="Team A" id="team2">
+	</div>
+	<div>
+	<button type="submit" class="btn btn-default col-md-3 col-md-offset-3" onclick="adddata();">Update</button>
+	</div>
+	</form>
+	</div>
+	</div>
+   <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+	var data;
+	var option;
+	var chart;
+	var chartdata;
+     
+      function drawChart() {
+	  chartdata=[
+          ['time', 'Team-A', 'Team-B'],
+          ['0', 0, 0],
+        ];
+        data = google.visualization.arrayToDataTable(chartdata);
+
+        options = {
+          title: 'Score Board',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+         chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+	  google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+	  function sortdata(o1,o2){
+	  
+	  }
+	  function adddata(){
+	  t=document.getElementById("time").value;
+	  a=document.getElementById("team1").value;
+	  b=document.getElementById("team2").value;	  
+	  chartdata.push([""+parseInt(t)+"",parseInt(a),parseInt(b)]);
+	  data = google.visualization.arrayToDataTable(chartdata);
+	  chart.draw(data, options);
+	  }
+	  
+	 
+    </script>
+  </body>
+</html>
