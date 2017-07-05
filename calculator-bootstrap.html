@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculator</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	
+	<style>
+        .upper{
+        padding: 30px;
+        margin-bottom: 30px;
+        font-size: 18px;
+        font-weight: 200;
+        line-height: 30px;
+        background-color: #eee;
+        border-radius: 10px;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+        //margin-top:50px;
+        }
+        .d0{
+        background:pink;
+        border:1px solid black;
+        }
+
+
+        #equal-upper{
+        height:40px;
+        margin-top:4px;
+        }
+        .button-panel{
+        background-color:#eee;
+        padding:20px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        }
+
+        .history`{
+        background-color:#eee;
+        }
+        #input{
+        font-size:20px !important;
+        }
+        #result{
+        font-size:20px !important;
+        }
+        .title{
+        background-color: darkturquoise;
+        font-size: 30px;
+        margin-top:30px;
+        border-radius: 10px;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+        }
+        .history-list{
+            font-size: 20px;
+        }
+	</style>
+
+   </head>
+   <body>
+   <div class="container">
+       <div class="text-center title">
+              Calculator-Bootstrap  
+        </div>
+		<div class="upper">
+			<div class="container">
+                
+			   <div class="row">
+			   <form action="#">
+					<div class=" form-group col-md-7">
+						<label>Input</label>
+						<input class="form-control text-area" type="text" id="input" readonly>
+						<span id="calculate"></span>
+					</div>
+					<div class="col-md-1 col-md-offset-0 text-center">
+						<div class="row">
+							<br />
+							<button class="btn btn-primary col-md-10 col-md-offset-1 equal" id="equal-upper">=</button> 
+						</div>
+					</div>
+					<div class="form-group col-md-3">
+					<label>Result</label>
+						<input class="form-control text-area" id="result"type="text" value="" readonly>
+					</div>
+				</form>
+				</div>
+			</div>
+		</div>
+		<div class="down-panel">
+			<div class="row">
+				<div class=" container col-md-7">
+				   <div class="button-panel">
+
+
+							<div class="row">
+								<button class="btn btn-default col-xs-2 col-xs-offset-1 btn1" value="7">7</button>
+								<button class="btn btn-default col-xs-2 col-xs-offset-0 btn1" value="8">8</but1on>
+								<button class="btn btn-default col-xs-2 col-xs-offset-0 btn1" value="9">9</button>
+								<button class="btn btn-default col-xs-2 col-xs-offset-0 btn1" value="+">+</button>
+								<button class="btn btn-default col-xs-2 col-xs-offset-0 backspace" value=" "><-</button>
+							</div>
+							<div class="row">
+								<button class="btn btn-default col-xs-2 col-xs-offset-1 btn1" value="4">4</button>
+								<button class="btn btn-default col-xs-2 col-xs-offset-0 btn1" value="5">5</but1on>
+								<button class="btn btn-default col-xs-2 col-xs-offset-0 btn1" value="6">6</button>
+								<button class="btn btn-default col-xs-2 col-xs-offset-0 btn1" value="-">-</button>
+								<button class="btn btn-default col-xs-2 col-xs-offset-0 clr" value=" ">CLR</button>
+							</div>
+							<div class="row">
+								<button class="btn btn-default col-xs-2 col-xs-offset-1 btn1" value="1">1</button>
+								<button class="btn btn-default col-xs-2 col-xs-offset-0 btn1" value="2">2</but1on>
+								<button class="btn btn-default col-xs-2 col-xs-offset-0 btn1" value="3">3</button>
+								<button class="btn btn-default col-xs-2 col-xs-offset-0 btn1" value="/">/</button>
+								<button class="btn btn-default col-xs-2 col-xs-offset-0 btn1" value="%">%</button>
+							</div>
+							<div class="row">
+								<button class="btn btn-default col-xs-2 col-xs-offset-1 btn1" value=".">.</button>
+								<button class="btn btn-default col-xs-4 col-xs-offset-0 btn1" value="0">0</but1on>
+								<button class="btn btn-default col-xs-2 col-xs-offset-0 btn1" value="*">*</button>
+								<button class="btn btn-default col-xs-2 col-xs-offset-0 equal" value="=">=</button>
+							</div>
+							
+						</div>
+				   </div>
+				 
+				 <div class="container">
+					<div class="history col-md-3 col-md-offset-1 well">
+                        <legend>History</legend>
+							<ul class="history-list"></ul>
+					</div>
+				 </div>
+			</div>
+		</div>
+	</div>
+<script>
+var btns=document.querySelectorAll(".btn1");
+var equal=document.querySelectorAll(".equal");
+var input=document.getElementById("input");
+var result=document.getElementById("result");
+var calc=document.getElementById("calculate");
+var history_list=document.querySelector(".history-list");
+    var clr=document.querySelector(".clr");
+    var del=document.querySelector(".backspace");
+btns.forEach(function(element){
+element.onclick=function(){
+input.value=input.value+element.value;
+    result.value="";
+}
+})
+equal.forEach(function(element){
+    element.onclick=function(){
+        if(input.value=="")
+        {
+            calc.innerHTML="Please Enter A Valid Input";
+        }
+        else{
+        ans=eval(input.value);
+        result.value=ans;
+        history_list.innerHTML+="<li>"+input.value+"="+ans+"</li>";
+        input.value="";
+        }
+    }})
+clr.onclick=function(){
+    input.value="";
+    result.value="";
+}
+del.onclick=function(){
+    input.value=input.value.substring(0,input.value.length-1);
+}
+</script>
+<!-- <script>
+var btns=document.querySelectorAll(".btn1");
+var input=document.getElementById("input");
+var result=document.getElementById("result");
+var operations=document.querySelectorAll(".btn2");
+var a=0;
+var b=0;
+var c="";
+var arr=[0,0,0];
+console.log(arr);
+btns.forEach(function(element){
+element.onclick=function(){
+input.value+=element.innerHTML;
+arr[0]=input.value;
+}
+})
+operations.forEach(function(element){
+element.onclick=function(){
+
+{
+var b=parseFloat(input.value);
+c+=b;
+console.log("a->"+a);
+console.log("b->"+b);
+console.log("c->"+c);
+
+switch(element.innerHTML)
+{
+case '+' :
+			
+		arr[1]="+";
+		arr[2]=parseFloat(arr[2])+parseFloat(arr[0]);
+		input.value="";
+		console.log(arr);
+		
+		break;
+case '-' :
+		arr[1]="-";
+		break;
+		
+}
+}
+
+}}) 
+</script>-->
+   </body>
+</html>
